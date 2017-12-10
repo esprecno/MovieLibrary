@@ -8,7 +8,7 @@ import java.util.Iterator;
 /**
  *
  * @author Quentin KAMENDA - ISEN Lille 2017
- * @version 0.2 (Checking movies)
+ * @version 0.3 (Filter)
  * @since 10th December 2017
  */
 public class Library implements Serializable{
@@ -75,7 +75,8 @@ public class Library implements Serializable{
      * @return true if the movie is already in the collection; false if not.
      */
     public boolean checkMovie(Movie movie){
-        Iterator<Movie> i = collection.iterator();
+        
+        Iterator<Movie> i = this.collection.iterator();
         
         while(i.hasNext()){
             Movie m = (Movie) i.next();
@@ -94,6 +95,33 @@ public class Library implements Serializable{
             }
         }
         return false;
+    }
+    
+    /**
+     * Filters the movies in the collection by release year
+     * @param year (Integer) the year 
+     * @return (ArrayList<Movie>) the list of movies from the wanted year
+     */
+    public ArrayList<Movie> yearMovies(Integer year){
+        
+        ArrayList<Movie> list = new ArrayList();
+        
+        Iterator<Movie> i = this.collection.iterator();
+        
+        while(i.hasNext()){
+            Movie m = (Movie) i.next();
+            
+            if (year.equals(m.getReleaseYear())){
+                //System.out.println(m.toString());
+                list.add(m);
+            }
+        }
+        
+        if (list.isEmpty()){
+            System.out.println("No movies were found in the collection for the year " + year);
+        }
+        
+        return list;
     }
     
 }
