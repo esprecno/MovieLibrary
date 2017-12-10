@@ -13,7 +13,7 @@ import java.util.Scanner;
 /**
  * 
  * @author Quentin KAMENDA - ISEN Lille 2017
- * @version 0.1
+ * @version 0.2
  * @since 10th December 2017
  */
 public class MovieLibrary {
@@ -39,9 +39,10 @@ public class MovieLibrary {
         
         while (true){
             System.out.println("\n Enter 0 to save and quit"
-                    + "\n Enter 1 to view the content of your library"
+                    + "\n Enter 1 to load a Library"
                     + "\n Enter 2 to add a Movie to your collection"
-                    + "\n Enter 3 to load a Library");
+                    + "\n Enter 3 to delete a Movie from your collection"
+                    + "\n Enter 4 to view the content of your Library");
             
             Integer action = input.nextInt();
             switch (action){
@@ -49,14 +50,18 @@ public class MovieLibrary {
                     saveAndQuit();
                     break;
                 case 1:
-                    System.out.println(lib.toString());
+                    System.out.println("Enter the name of the file to load:");
+                    loadLib(input.next());
                     break;
                 case 2:
                     addMovie();
                     break;
                 case 3:
-                    System.out.println("Enter the name of the file to load:");
-                    loadLib(input.next());
+                    System.out.println("Enter the name of the movie you want to delete: ");
+                    lib.delMovie(input.next());
+                    break;
+                case 4:
+                    System.out.println(lib.toString());
                     break;
                 // ADD CASES HERE TO ADD FUNCTIONALITIES
                 default:
@@ -129,7 +134,8 @@ public class MovieLibrary {
                 in = new ObjectInputStream(fis);
                 lib = (Library) in.readObject();
                 fis.close();
-                in.close();           
+                in.close();  
+                System.out.println("Library " + name + " successfully loaded!");
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e){
@@ -141,4 +147,6 @@ public class MovieLibrary {
             System.out.println("The file does not exist. Check your file's name.");
         }
     }
+    
+    
 }
