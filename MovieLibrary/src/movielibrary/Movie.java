@@ -1,7 +1,7 @@
 
 package movielibrary;
 
-import java.util.Objects;
+import java.io.Serializable;
 
 /**
  *
@@ -9,7 +9,7 @@ import java.util.Objects;
  * @version 0.0
  * @since 10th December 2017
  */
-public class Movie {
+public class Movie implements Serializable{
     
     /**
      * The name of the Movie.
@@ -91,47 +91,7 @@ public class Movie {
     public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
     }
-    
-    
-    /* hashCode & equals methods */
-    
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Movie other = (Movie) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.director, other.director)) {
-            return false;
-        }
-        if (!Objects.equals(this.genre, other.genre)) {
-            return false;
-        }
-        if (!Objects.equals(this.releaseYear, other.releaseYear)) {
-            return false;
-        }
-        return true;
-    }
-
-
-
-    
-    
     
     
 }

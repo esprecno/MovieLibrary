@@ -1,6 +1,7 @@
 
 package movielibrary;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  * @version 0.0
  * @since 10th December 2017
  */
-public class Library {
+public class Library implements Serializable{
     
     /**
      * List of all movies in the Library
