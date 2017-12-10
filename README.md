@@ -6,7 +6,7 @@
       
 ### To run this project:
 <ol> 
-<li> Download the source files in: MovieLibrary/src/movielibrary </li> 
+<li> Download the source files in: <a href="https://github.com/QuentinKamenda/MovieLibrary/tree/master/MovieLibrary/src/movielibrary" > MovieLibrary/src/movielibrary </a> </li> 
 <li> Add them to your favorite IDE in a new project </li> 
 <li> Execute (Clean/Build/Run) the project </li> 
 <li> Enjoy! </li> 
