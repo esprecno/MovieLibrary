@@ -8,7 +8,7 @@ import java.util.Iterator;
 /**
  *
  * @author Quentin KAMENDA - ISEN Lille 2017
- * @version 0.1
+ * @version 0.2 (Checking movies)
  * @since 10th December 2017
  */
 public class Library implements Serializable{
@@ -67,12 +67,33 @@ public class Library implements Serializable{
                 return;
             }
         }
-//        for (Movie movie : this.collection) {
-//            if (name.equals(movie.getName())){
-//                this.collection.remove(movie);
-//                System.out.println(movie.getName() + " has been succesfully removed!");
-//            }
-//        }
+    }
+    
+    /**
+     * Checks the name and the director of the movie and its name to see if the Movie is already in the collection.
+     * @param movie the movie to be checked
+     * @return true if the movie is already in the collection; false if not.
+     */
+    public boolean checkMovie(Movie movie){
+        Iterator<Movie> i = collection.iterator();
+        
+        while(i.hasNext()){
+            Movie m = (Movie) i.next();
+            
+            if (movie.getName().equals(m.getName())){
+                if (movie.getDirector().equals(m.getName())){
+                    System.out.println("The movie " + movie.getName() + " already is in the collection!");
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else{
+                return false;
+            }
+        }
+        return false;
     }
     
 }

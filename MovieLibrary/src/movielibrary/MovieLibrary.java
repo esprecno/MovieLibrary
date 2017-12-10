@@ -77,20 +77,25 @@ public class MovieLibrary {
         String name, director, genre;
         Integer year;
         
+        input.nextLine();
+        
         System.out.println("Entrer the name of the movie (no spaces):");
-        name = input.next();
-        
+        name = input.nextLine();
+
         System.out.println("Enter its director (no spaces):");
-        director = input.next();
-        
+        director = input.nextLine();
+
         System.out.println("Enter the genre (no spaces):");
-        genre = input.next();
+        genre = input.nextLine();
         
         System.out.println("Enter the release year:");
         year = input.nextInt();
         
         Movie movie = new Movie(name, director, genre, year);
-        lib.addMovie(movie);
+        if (!lib.checkMovie(movie)){
+            lib.addMovie(movie);
+        }
+        
     }
     
     /**
@@ -137,9 +142,11 @@ public class MovieLibrary {
                 in.close();  
                 System.out.println("Library " + name + " successfully loaded!");
             } catch (IOException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
+                System.err.print("Unable to open the file!");
             } catch (ClassNotFoundException e){
-                e.printStackTrace();
+                //e.printStackTrace();
+                System.err.print("Unable to open the file!!");
             }
         }
         
