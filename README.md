@@ -13,6 +13,7 @@
 <li> Execute (Clean/Build/Run) the project </li> 
 <li> Enjoy! </li> 
 </ol>
+You can also use a little pre-filled collection "testLibrary" to load if you want an example.
 
 #### On Netbeans (.ser serialization):
 <ol> 
