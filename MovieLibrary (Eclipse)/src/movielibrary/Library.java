@@ -1,21 +1,18 @@
 
 package movielibrary;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
- *
+ * This is the Library Class, where the Movies are stored in a "collection"
  * @author Quentin KAMENDA - ISEN Lille 2017
  * @version 0.3 (Filter)
  * @since 10th December 2017
  */
-public class Library implements Serializable{
+public class Library{
     
-    /**
+	/**
      * List of all movies in the Library
      */
     private ArrayList<Movie> collection;
@@ -26,6 +23,23 @@ public class Library implements Serializable{
     public Library() {
         this.collection = new ArrayList<Movie>();
     }
+    
+    /**
+     * Gets the collection of movies
+     * @return (ArrayList of Movies) the collection
+     */
+    public ArrayList<Movie> getCollection(){
+    	return this.collection;
+    }
+    
+    /**
+     * Sets the collection of movies
+     * @param collection (ArrayList of Movies) the new collection
+     */
+    public void setCollection(ArrayList<Movie> collection){
+    	this.collection = collection;
+    }
+    
     
     /**
      * Method to add a created movie in the library
@@ -99,14 +113,15 @@ public class Library implements Serializable{
         return false;
     }
     
+    
     /**
      * Filters the movies in the collection by release year
      * @param year (Integer) the year 
-     * @return (ArrayList<Movie>) the list of movies from the wanted year
+     * @return (ArrayList of Movies) the list of movies from the wanted year
      */
     public ArrayList<Movie> yearMovies(Integer year){
         
-        ArrayList<Movie> list = new ArrayList();
+        ArrayList<Movie> list = new ArrayList<Movie>();
         
         Iterator<Movie> i = this.collection.iterator();
         
@@ -126,30 +141,8 @@ public class Library implements Serializable{
         return list;
     }
     
-    public void saveLib() throws JSONException{
-        
-        JSONObject json = new JSONObject();
-        
-        Iterator<Movie> i = this.collection.iterator();
-        Integer c = 0;
-        
-        while(i.hasNext()){
-            Movie m = (Movie) i.next();
-            
-            JSONObject obj = new JSONObject();
-            
-            obj.put("movie", m.getName());
-            obj.put("director", m.getDirector());
-            obj.put("genre", m.getGenre());
-            obj.put("year", m.getReleaseYear());
-            
-            json.put(c.toString(), obj);
-            
-            c++;
-        }
-
-        System.out.println(json);
-        
-    }
+    
+    
+    
     
 }
