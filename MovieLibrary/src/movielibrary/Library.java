@@ -4,8 +4,6 @@ package movielibrary;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  *
@@ -125,31 +123,5 @@ public class Library implements Serializable{
         
         return list;
     }
-    
-    public void saveLib() throws JSONException{
-        
-        JSONObject json = new JSONObject();
-        
-        Iterator<Movie> i = this.collection.iterator();
-        Integer c = 0;
-        
-        while(i.hasNext()){
-            Movie m = (Movie) i.next();
-            
-            JSONObject obj = new JSONObject();
-            
-            obj.put("movie", m.getName());
-            obj.put("director", m.getDirector());
-            obj.put("genre", m.getGenre());
-            obj.put("year", m.getReleaseYear());
-            
-            json.put(c.toString(), obj);
-            
-            c++;
-        }
 
-        System.out.println(json);
-        
-    }
-    
 }

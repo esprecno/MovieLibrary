@@ -8,11 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import org.json.JSONObject;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.json.JSONException;
 
 /**
  * 
@@ -47,8 +43,7 @@ public class MovieLibrary {
                     + "\n Enter 2 to add a Movie to your collection"
                     + "\n Enter 3 to delete a Movie from your collection"
                     + "\n Enter 4 to view the content of your Library"
-                    + "\n Enter 5 to list all the movies of a year"
-                    + "\n Enter 6 to test the last feature");
+                    + "\n Enter 5 to list all the movies of a year");
             
             Integer action = input.nextInt();
             switch (action){
@@ -73,14 +68,6 @@ public class MovieLibrary {
                     System.out.println("Enter the year to filter: ");
                     System.out.println(lib.yearMovies(input.nextInt()).toString());
                     break;
-                case 6:
-            {
-                try {
-                    lib.saveLib();
-                } catch (JSONException ex) {
-                    Logger.getLogger(MovieLibrary.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
                 // ADD CASES HERE TO ADD FUNCTIONALITIES
                 default:
                     break;
@@ -133,9 +120,11 @@ public class MovieLibrary {
             fos.close();
             out.close();
         } catch (FileNotFoundException e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.err.print("Unable to open the file!");
         } catch (IOException e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.err.print("Unable to open the file!!");
         }
         
         System.exit(0);
