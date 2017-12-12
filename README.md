@@ -10,7 +10,7 @@
 <ol> 
 <li> Download the source files in: <a href="https://github.com/QuentinKamenda/MovieLibrary/tree/master/MovieLibrary%20(Eclipse)/src/movielibrary" > MovieLibrary (Eclipse)/src/movielibrary </a> </li> 
 <li> Add them to a new Eclipse project </li> 
-<li> Make sure you have <i>gson</> linked to your project </li>
+<li> Make sure you have <i>gson</i> linked to your project </li>
 <li> Execute (Clean/Build/Run) the project </li> 
 <li> Enjoy! </li> 
 </ol>
