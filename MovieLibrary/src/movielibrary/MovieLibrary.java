@@ -48,14 +48,14 @@ public class MovieLibrary {
             Integer action = input.nextInt();
             switch (action){
                 case 0:
-                    saveAndQuit();
+                    SaveAndQuit.saveAndQuit();
                     break;
                 case 1:
                     System.out.println("Enter the name of the file to load:");
-                    loadLib(input.next());
+                    LoadLib.loadLib(input.next());
                     break;
                 case 2:
-                    addMovie();
+                    AddMovie.addMovie();
                     break;
                 case 3:
                     System.out.println("Enter the name of the movie you want to delete: ");
@@ -73,94 +73,6 @@ public class MovieLibrary {
                     break;
             }
         }
-    }
-    
-    /**
-     * Method to make the user add a movie in his library
-     */
-    private static void addMovie(){
-        String name, director, genre;
-        Integer year;
-        
-        input.nextLine();
-        
-        System.out.println("Entrer the name of the movie (no spaces):");
-        name = input.nextLine();
-
-        System.out.println("Enter its director (no spaces):");
-        director = input.nextLine();
-
-        System.out.println("Enter the genre (no spaces):");
-        genre = input.nextLine();
-        
-        System.out.println("Enter the release year:");
-        year = input.nextInt();
-        
-        Movie movie = new Movie(name, director, genre, year);
-        if (!lib.checkMovie(movie)){
-            lib.addMovie(movie);
-        }
-        
-    }
-    
-    /**
-     * Saves the Library in a '.ser' file and quits the program
-     */
-    private static void saveAndQuit(){
-        System.out.println("Enter file name: ");
-        
-        fileName = input.next() + ".ser";
-        FileOutputStream fos = null;
-        ObjectOutputStream out = null;
-        
-        try {
-            fos = new FileOutputStream(fileName);
-            out = new ObjectOutputStream(fos);
-            out.writeObject(lib);
-            fos.close();
-            out.close();
-        } catch (FileNotFoundException e){
-            //e.printStackTrace();
-            System.err.print("Unable to open the file!");
-        } catch (IOException e){
-            //e.printStackTrace();
-            System.err.print("Unable to open the file!!");
-        }
-        
-        System.exit(0);
-    }
-    
-    /**
-     * Loads a Library (previously Serialized)
-     * @param name the name of the .ser file
-     */
-    private static void loadLib(String name){
-        FileInputStream fis = null;
-        ObjectInputStream in = null;
-        
-        File file = new File(name + ".ser");
-        
-        if (file.exists()){
-            try{
-                fis = new FileInputStream(file);
-                in = new ObjectInputStream(fis);
-                lib = (Library) in.readObject();
-                fis.close();
-                in.close();  
-                System.out.println("Library " + name + " successfully loaded!");
-            } catch (IOException e) {
-                //e.printStackTrace();
-                System.err.print("Unable to open the file!");
-            } catch (ClassNotFoundException e){
-                //e.printStackTrace();
-                System.err.print("Unable to open the file!!");
-            }
-        }
-        
-        else {
-            System.out.println("The file does not exist. Check your file's name.");
-        }
-    }
-    
+    } 
     
 }
